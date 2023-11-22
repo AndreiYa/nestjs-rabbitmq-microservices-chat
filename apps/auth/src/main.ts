@@ -1,7 +1,7 @@
-import {NestFactory} from '@nestjs/core';
-import {AuthModule} from './auth.module';
-import {ConfigService} from "@nestjs/config";
-import {MicroserviceOptions, Transport} from "@nestjs/microservices";
+import { NestFactory } from '@nestjs/core';
+import { AuthModule } from './auth.module';
+import { ConfigService } from '@nestjs/config';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create(AuthModule);
@@ -20,9 +20,9 @@ async function bootstrap() {
       queue: QUEUE,
       queueOptions: {
         durable: true,
-      }
-    }
-  })
+      },
+    },
+  });
   await app.startAllMicroservices();
 }
-bootstrap().then(r => {});
+bootstrap().then(() => {});
